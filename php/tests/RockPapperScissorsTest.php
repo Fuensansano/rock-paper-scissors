@@ -16,35 +16,23 @@ class RockPapperScissorsTest extends TestCase
         $this->game = new RockPaperScissorsGame();
     }
 
-    /** @test */
-    public function given_I_have_chosen_rock_when_the_opponent_chooses_scissors_then_I_should_win(): void
+    function providersGame(): \Generator
     {
-        $result = $this->game->play(Movement::ROCK, Movement::SCISSORS);
-
-        self::assertEquals( Player::PLAYER_1, $result);
+        yield 'Given I have chosen rock When the opponent chooses scissors Then I should win' => [Movement::ROCK, Movement::SCISSORS, Player::PLAYER_1];
+        yield 'Given I have chosen scissors When the opponent chooses rock Then the opponent should win' => [Movement::SCISSORS, Movement::ROCK, Player::PLAYER_2];
+        yield 'Given I have chosen paper When the opponent chooses rock Then I should win' => [Movement::PAPER, Movement::ROCK, Player::PLAYER_1];
+        yield 'Given I have chosen rock When the opponent chooses paper Then I should win' => [Movement::ROCK, Movement::PAPER, Player::PLAYER_2];
     }
 
-    /** @test */
-    public function given_I_have_chosen_scissors_when_the_opponent_chooses_rock_then_the_opponent_should_win(): void
+    /**
+     * @dataProvider providersGame
+     * @test
+     */
+    public function given_the_player1_movement_and_the_player2_movement_one_of_them_should_win(Movement $movementPlayer1, Movement $movementPlayer2, Player $winner): void
     {
-        $result = $this->game->play(Movement::SCISSORS, Movement::ROCK);
+        $result = $this->game->play($movementPlayer1, $movementPlayer2);
 
-        self::assertEquals(Player::PLAYER_2, $result);
+        self::assertEquals($winner, $result);
     }
 
-    /** @test */
-    public function given_I_have_chosen_paper_when_the_opponent_chooses_rock_then_I_should_win(): void
-    {
-        $result = $this->game->play(Movement::PAPER, Movement::ROCK);
-
-        self::assertEquals(Player::PLAYER_1, $result);
-    }
-
-    /** @test */
-    public function given_I_have_chosen_rock_when_the_opponent_chooses_paper_then_the_opponent_should_win(): void
-    {
-        $result = $this->game->play(Movement::ROCK, Movement::PAPER);
-
-        self::assertEquals(Player::PLAYER_2, $result);
-    }
 }
