@@ -2,18 +2,17 @@
 
 namespace Kata;
 
-use KataTests\Movements;
-use KataTests\Players;
+use Kata\Movement;
+use Kata\Player;
 
 class RockPaperScissorsGame
 {
-    public function play(Movements $player1move, Movements $player2move): Players
+    public function play(Movement $player1move, Movement $player2move): Player
     {
-        var_dump($player1move === Movements::SCISSORS);
-        if ($player1move === Movements::ROCK || $player1move === Movements::PAPER) {
-            return Players::PLAYER_1;
+        if ($player1move === Movement::ROCK || $player1move === Movement::PAPER) {
+            return Player::PLAYER_1;
         }
 
-        return Players::PLAYER_2;
+        return Player::PLAYER_2;
     }
 }
