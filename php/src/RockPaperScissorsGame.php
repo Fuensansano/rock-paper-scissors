@@ -2,13 +2,15 @@
 
 namespace Kata;
 
+use KataTests\Players;
+
 class RockPaperScissorsGame
 {
-    public function play(string $player1move, string $player2move): string
+    public function play(string $player1move, string $player2move): Players
     {
         if ($player1move === 'rock' || $player1move === 'paper') {
-            return 'player1';
+            return Players::PLAYER_1;
         }
-        return 'player2';
+        return Players::PLAYER_2;
     }
 }
