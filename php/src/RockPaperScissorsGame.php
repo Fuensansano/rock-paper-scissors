@@ -7,6 +7,9 @@ class RockPaperScissorsGame
 
     public function play(string $player1move, string $player2move)
     {
-        return 'player1';
+        if ($player1move == 'rock') {
+            return 'player1';
+        }
+        return 'player2';
     }
 }
