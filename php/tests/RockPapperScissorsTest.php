@@ -39,4 +39,12 @@ class RockPapperScissorsTest extends TestCase
 
         self::assertEquals(Player::PLAYER_1, $result);
     }
+
+    /** @test */
+    public function given_I_have_chosen_rock_when_the_opponent_chooses_paper_then_the_opponent_should_win(): void
+    {
+        $result = $this->game->play(Movement::ROCK, Movement::PAPER);
+
+        self::assertEquals(Player::PLAYER_2, $result);
+    }
 }
