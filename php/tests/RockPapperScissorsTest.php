@@ -21,7 +21,8 @@ class RockPapperScissorsTest extends TestCase
         yield 'Given I have chosen rock When the opponent chooses scissors Then I should win' => [Movement::ROCK, Movement::SCISSORS, Player::PLAYER_1];
         yield 'Given I have chosen scissors When the opponent chooses rock Then the opponent should win' => [Movement::SCISSORS, Movement::ROCK, Player::PLAYER_2];
         yield 'Given I have chosen paper When the opponent chooses rock Then I should win' => [Movement::PAPER, Movement::ROCK, Player::PLAYER_1];
-        yield 'Given I have chosen rock When the opponent chooses paper Then I should win' => [Movement::ROCK, Movement::PAPER, Player::PLAYER_2];
+        yield 'Given I have chosen rock When the opponent chooses paper Then the opponent should win' => [Movement::ROCK, Movement::PAPER, Player::PLAYER_2];
+        yield 'Given I have chosen scissors When the opponent chooses paper Then I should win' => [Movement::SCISSORS, Movement::PAPER, Player::PLAYER_1];
     }
 
     /**
