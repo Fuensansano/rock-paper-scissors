@@ -4,10 +4,9 @@ namespace Kata;
 
 class RockPaperScissorsGame
 {
-
-    public function play(string $player1move, string $player2move)
+    public function play(string $player1move, string $player2move): string
     {
-        if ($player1move == 'rock') {
+        if ($player1move === 'rock') {
             return 'player1';
         }
         return 'player2';
