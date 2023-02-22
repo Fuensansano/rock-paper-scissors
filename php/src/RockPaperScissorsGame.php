@@ -10,26 +10,25 @@ class RockPaperScissorsGame
 {
     public function play(Movement $player1move, Movement $player2move): Player
     {
-        if ($player1move === Movement::ROCK && $player2move === Movement::ROCK) {
+        if ($player1move ===  $player2move) {
             return Player::DRAW;
         }
 
-        if ($player1move === Movement::SCISSORS && $player2move === Movement::PAPER) {
-            return Player::PLAYER_1;
-        }
-
-        if($player2move === Movement::PAPER) {
-            return Player::PLAYER_2;
-        }
-
-        if ($player1move === Movement::PAPER && $player2move === Movement::SCISSORS) {
-            return Player::PLAYER_2;
-        }
-
-        if ($player1move === Movement::ROCK || $player1move === Movement::PAPER) {
+        if ($this->hasPlayer1Win($player1move, $player2move)) {
             return Player::PLAYER_1;
         }
 
         return Player::PLAYER_2;
+    }
+
+    private function hasPlayer1Win(Movement $player1move, Movement $player2move): bool
+    {
+        $winnerMovements = [
+            Movement::ROCK->value => Movement::SCISSORS,
+            Movement::SCISSORS->value => Movement::PAPER,
+            Movement::PAPER->value => Movement::ROCK,
+        ];
+
+        return $winnerMovements[$player1move->value] === $player2move;
     }
 }
