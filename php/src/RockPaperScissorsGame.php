@@ -10,6 +10,10 @@ class RockPaperScissorsGame
 {
     public function play(Movement $player1move, Movement $player2move): Player
     {
+        if ($player1move === Movement::ROCK && $player2move === Movement::ROCK) {
+            return Player::DRAW;
+        }
+
         if ($player1move === Movement::SCISSORS && $player2move === Movement::PAPER) {
             return Player::PLAYER_1;
         }
