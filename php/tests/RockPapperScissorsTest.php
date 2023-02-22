@@ -36,6 +36,8 @@ class RockPapperScissorsTest extends TestCase
         => [Movement::ROCK, Movement::ROCK, Player::DRAW];
         yield 'Given I have chosen scissors When the opponent chooses scissors Then it should be a draw'
         => [Movement::SCISSORS, Movement::SCISSORS, Player::DRAW];
+        yield 'Given I have chosen paper When the opponent chooses paper Then it should be a draw'
+        => [Movement::PAPER, Movement::PAPER, Player::DRAW];
 
     }
 
