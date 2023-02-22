@@ -18,6 +18,10 @@ class RockPaperScissorsGame
             return Player::PLAYER_2;
         }
 
+        if ($player1move === Movement::PAPER && $player2move === Movement::SCISSORS) {
+            return Player::PLAYER_2;
+        }
+
         if ($player1move === Movement::ROCK || $player1move === Movement::PAPER) {
             return Player::PLAYER_1;
         }
